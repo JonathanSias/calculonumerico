@@ -30,11 +30,8 @@ void falsaPosicao(float a, float b, int p, int ni){
     // 1 - f(xk) < E
     // 2 - |xk - xk-1| < E
     // 3 - numero limite de iteraçoes
-    float k0 = a;
-    float k1 = b;
-    while (/* condition */) {
-        /* code */
-    }
+    //float k0 = a;
+    //float k1 = b;
 }
 
 // BISSECÇAO
@@ -50,13 +47,17 @@ void falsaPosicao(float a, float b, int p, int ni){
 // [1, 2]               | 3
 // iteracoes = 18       |
 void bisseccao(float a, float b, float p, int ni){
+    float intervalo1 = a;
+    float intervalo2 = b;
     float pontoMedio;
     int i = 1;
     float fx;
+    float aux;
     // 1
     while (i <= ni) {   // criterios de parada
         pontoMedio = ((a+b)/2);
-        fx = ((pontoMedio^3)-((9*pontoMedio)+5));
+        aux = pow(pontoMedio, 3);
+        fx = ((aux)-(9*pontoMedio)+5);
         if ((fx == 0) || (pontoMedio < p)) {
             // retorna pontoMedio
         }
@@ -72,11 +73,15 @@ void bisseccao(float a, float b, float p, int ni){
         }
         // printar iteraçao, valor a, valor b, ponto medio, fx
     }
+    aux = 0;
     i = 1;
+    a = intervalo1;
+    b = intervalo2;
     // 2
     while (i <= ni) {   // até chegar as 30 iterações
         pontoMedio = ((a+b)/2);
-        fx = ((exp(pontoMedio))-(3*pontoMedio));
+        aux = exp(pontoMedio);
+        fx = ((aux)-(3*pontoMedio));
         if ((fx == 0) || (pontoMedio < p)) {
             // retorna pontoMedio
         }
@@ -92,10 +97,14 @@ void bisseccao(float a, float b, float p, int ni){
         }
         // printar iteraçao, valor a, valor b, ponto medio, fx
     }
+    aux = 0;
     i = 1;
+    a = intervalo1;
+    b = intervalo2;
     while (i <= ni) {   // até chegar as 18 iterações
         pontoMedio = pontoMedio = ((a+b)/2);
-        fx = ((exp(pontoMedio))-(3*pontoMedio));
+        aux = exp(pontoMedio);
+        fx = ((aux)-(3*pontoMedio));
         if ((fx == 0) || (pontoMedio < p)) {
             // retorna pontoMedio
         }
