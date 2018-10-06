@@ -54,25 +54,61 @@ void bisseccao(float a, float b, float p, int ni){
     int i = 1;
     float fx;
     // 1
-    while ((i <= ni) || ( < p)) {   // criterios de parada
+    while (i <= ni) {   // criterios de parada
         pontoMedio = ((a+b)/2);
         fx = ((pontoMedio^3)-((9*pontoMedio)+5));
+        if ((fx == 0) || (pontoMedio < p)) {
+            // retorna pontoMedio
+        }
         i++;
+        // testa se os sinais de "a" e do pontoMedio sao iguais
+        // caso nao seja, testa se os sinais de "b" e do pontoMedio sao iguais
+        if (((pontoMedio < 0) && (a < 0)) || ((pontoMedio > 0) && (a > 0))) {
+            a = pontoMedio;
+        }else{
+            if (((pontoMedio > 0) && (b > 0)) || ((pontoMedio < 0) && (b < 0))) {
+                b = pontoMedio;
+            }
+        }
         // printar iteraçao, valor a, valor b, ponto medio, fx
     }
     i = 1;
     // 2
     while (i <= ni) {   // até chegar as 30 iterações
         pontoMedio = ((a+b)/2);
-        fx = ((^pontoMedio)-(3*pontoMedio));
+        fx = ((exp(pontoMedio))-(3*pontoMedio));
+        if ((fx == 0) || (pontoMedio < p)) {
+            // retorna pontoMedio
+        }
         i++;
+        // testa se os sinais de "a" e do pontoMedio sao iguais
+        // caso nao seja, testa se os sinais de "b" e do pontoMedio sao iguais
+        if (((pontoMedio < 0) && (a < 0)) || ((pontoMedio > 0) && (a > 0))) {
+            a = pontoMedio;
+        }else{
+            if (((pontoMedio > 0) && (b > 0)) || ((pontoMedio < 0) && (b < 0))) {
+                b = pontoMedio;
+            }
+        }
         // printar iteraçao, valor a, valor b, ponto medio, fx
     }
     i = 1;
     while (i <= ni) {   // até chegar as 18 iterações
         pontoMedio = pontoMedio = ((a+b)/2);
-        fx = ((^pontoMedio)-(3*pontoMedio));
+        fx = ((exp(pontoMedio))-(3*pontoMedio));
+        if ((fx == 0) || (pontoMedio < p)) {
+            // retorna pontoMedio
+        }
         i++;
+        // testa se os sinais de "a" e do pontoMedio sao iguais
+        // caso nao seja, testa se os sinais de "b" e do pontoMedio sao iguais
+        if (((pontoMedio < 0) && (a < 0)) || ((pontoMedio > 0) && (a > 0))) {
+            a = pontoMedio;
+        }else{
+            if (((pontoMedio > 0) && (b > 0)) || ((pontoMedio < 0) && (b < 0))) {
+                b = pontoMedio;
+            }
+        }
         // printar iteraçao, valor a, valor b, ponto medio, fx
     }
 }
