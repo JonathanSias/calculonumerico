@@ -25,7 +25,7 @@
 // [1, 2]               | 3
 // iteraçoes = 28       |
 //
-void falsaPosicao(float a, float b, int p, int ni){
+void falsaPosicao(float a, float b, int p){
     // criterios de parada
     // 1 - f(xk) < E
     // 2 - |xk - xk-1| < E
@@ -46,79 +46,88 @@ void falsaPosicao(float a, float b, int p, int ni){
 // f(x) = (e^x)-(3x)    |
 // [1, 2]               | 3
 // iteracoes = 18       |
-void bisseccao(float a, float b, float p, int ni){
-    float intervalo1 = a;
-    float intervalo2 = b;
+void bisseccao(){
     float pontoMedio;
     int i = 1;
     float fx;
+    float fa;
+    float fb;
     float aux;
     // 1
-    while (i <= ni) {   // criterios de parada
+    float a = 0.5;
+    float b = 1;
+    printf("\n\nEXERCÍCIO 1:\n");
+    while (i <= 5) {   // criterios de parada
+        fa = ((pow(a, 3))-(9*a)+5);
+        fb = ((pow(b, 3))-(9*b)+5);
         pontoMedio = ((a+b)/2);
         aux = pow(pontoMedio, 3);
         fx = ((aux)-(9*pontoMedio)+5);
-        if ((fx == 0) || (pontoMedio < p)) {
+        /*if ((fx == 0) || (pontoMedio < p)) {
             // retorna pontoMedio
-        }
-        i++;
+        }*/
+        printf("%d a: %f, b: %f, x: %f\n", i, a, b, pontoMedio);
         // testa se os sinais de "a" e do pontoMedio sao iguais
         // caso nao seja, testa se os sinais de "b" e do pontoMedio sao iguais
-        if (((pontoMedio < 0) && (a < 0)) || ((pontoMedio > 0) && (a > 0))) {
-            a = pontoMedio;
+        if (fx < 0) {
+            b = pontoMedio;
         }else{
-            if (((pontoMedio > 0) && (b > 0)) || ((pontoMedio < 0) && (b < 0))) {
-                b = pontoMedio;
-            }
+            a = pontoMedio;
         }
-        // printar iteraçao, valor a, valor b, ponto medio, fx
+        i++;
     }
+    printf("\n\nEXERCÍCIO 2:\n");
+    ////////////////////////////////////////////////////////////////////////////
     aux = 0;
     i = 1;
-    a = intervalo1;
-    b = intervalo2;
+    a = 0;
+    b = 1;
     // 2
-    while (i <= ni) {   // até chegar as 30 iterações
+    while (i <= 30) {   // até chegar as 30 iterações
+        fa = ((exp(a))-(3*a));
+        fb = ((exp(b))-(3*b));
         pontoMedio = ((a+b)/2);
         aux = exp(pontoMedio);
         fx = ((aux)-(3*pontoMedio));
-        if ((fx == 0) || (pontoMedio < p)) {
+        /*if ((fx == 0) || (pontoMedio < p)) {
             // retorna pontoMedio
-        }
-        i++;
+        }*/
+        printf("%d a: %f, b: %f, x: %f\n", i, a, b, pontoMedio);
         // testa se os sinais de "a" e do pontoMedio sao iguais
         // caso nao seja, testa se os sinais de "b" e do pontoMedio sao iguais
-        if (((pontoMedio < 0) && (a < 0)) || ((pontoMedio > 0) && (a > 0))) {
-            a = pontoMedio;
+        if (fx < 0) {
+            b = pontoMedio;
         }else{
-            if (((pontoMedio > 0) && (b > 0)) || ((pontoMedio < 0) && (b < 0))) {
-                b = pontoMedio;
-            }
+            a = pontoMedio;
         }
-        // printar iteraçao, valor a, valor b, ponto medio, fx
+        i++;
     }
+    printf("\n\nEXERCÍCIO 3:\n");
+    ////////////////////////////////////////////////////////////////////////////
     aux = 0;
     i = 1;
-    a = intervalo1;
-    b = intervalo2;
-    while (i <= ni) {   // até chegar as 18 iterações
+    a = 1;
+    b = 2;
+    //3
+    while (i <= 18) {   // até chegar as 18 iterações
+        fa = ((exp(a))-(3-a));
+        fb = ((exp(b))-(3-b));
         pontoMedio = pontoMedio = ((a+b)/2);
         aux = exp(pontoMedio);
         fx = ((aux)-(3*pontoMedio));
-        if ((fx == 0) || (pontoMedio < p)) {
-            // retorna pontoMedio
-        }
-        i++;
+        /*if ((pontoMedio == 0) || (pontoMedio < p)) {
+            //printf("%f\n", pontoMedio);
+        }*/
+        //i++;
+        printf("%d a: %f, b: %f, x: %f\n", i, a, b, pontoMedio);
         // testa se os sinais de "a" e do pontoMedio sao iguais
         // caso nao seja, testa se os sinais de "b" e do pontoMedio sao iguais
-        if (((pontoMedio < 0) && (a < 0)) || ((pontoMedio > 0) && (a > 0))) {
+        if (fx < 0) {
             a = pontoMedio;
         }else{
-            if (((pontoMedio > 0) && (b > 0)) || ((pontoMedio < 0) && (b < 0))) {
-                b = pontoMedio;
-            }
+            b = pontoMedio;
         }
-        // printar iteraçao, valor a, valor b, ponto medio, fx
+        i++;
     }
 }
 
@@ -136,18 +145,10 @@ int main(){
         scanf("%d", &metodo);
         switch (metodo) {
             case 1:
-                scanf("%f\n", &x0);
-                scanf("%f\n", &x1);
-                scanf("%d\n", &precisao);
-                //scanf("%d\n", &iteracoes);
-                //falsaPosicao(x0, x1, precisao);
+                //falsaPosicao();
             break;
             case 2:
-                scanf("%f\n", &x0);
-                scanf("%f\n", &x1);
-                scanf("%d\n", &precisao);
-                //scanf("%d\n", &iteracoes);
-                //bisseccao(x0, x1, precisao);
+                bisseccao();
             break;
         }
     }
