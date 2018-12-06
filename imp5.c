@@ -63,8 +63,44 @@ void trapezio(){
 
 void simpson(){
     // 1/3
+    float x0 = -3;
+    float xn = 5;
+    float n = 10;
+    float h = (xn - x0)/n;
+    float x = x0;
+    float aux = 0;
+    float fx0 = 0;
+    float fxn = 0;
+    float impares = 0;
+    float pares = 0;
+    float fx;
+    int i;
     printf("1/3 SIMPSON\n");
     printf("Enunciado 1:\n");
+    for(i = 0; i < 11; i++) {
+        fx = (pow(((4*x)-3),3));
+        if (i == 0) {
+            fx0 = fx;
+        }
+        if (i == 10) {
+            fxn = fx;
+        }
+        if ((i%2) == 0) {
+            pares = (pares + (2*fx));
+        }
+        if ((i%2) != 0) {
+            impares = (impares + (4*fx));
+        }
+        x = (x + h);
+    }
+    float termos;
+    termos = (impares+pares);
+    float tercosimpson;
+    tercosimpson = (h/3*(fx0+termos+fxn));
+    printf("1) 1/3 Simpson: %f\n", tercosimpson);
+    float erroutsimpson;
+    erroutsimpson = (((pow(h,4))*(xn-x0))/180);
+    printf("1) Erro 1/3 Simpson: %f\n", erroutsimpson);
     // 3/8
     printf("3/8 SIMPSON\n");
     printf("Enunciado 1:\n");
